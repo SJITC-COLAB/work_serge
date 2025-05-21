@@ -1,13 +1,21 @@
 // src/components/Navbar.js
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import authService from '../services/authService';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const user = authService.getCurrentUser();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    authService.logout();
+    navigate('/login');
   };
 
   return (
@@ -39,61 +47,124 @@ const Navbar = () => {
           </button>
         </div>
         <div className={`md:flex space-x-4 ${isOpen ? 'block' : 'hidden'} md:block`}>
-          <Link
-            to="/cars"
-            className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
-              location.pathname === '/cars' ? 'bg-blue-800' : ''
-            }`}
-          >
-            Cars
-          </Link>
-          <Link
-            to="/service-packages"
-            className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
-              location.pathname === '/service-packages' ? 'bg-blue-800' : ''
-            }`}
-          >
-            Service Packages
-          </Link>
-          <Link
-            to="/packages"
-            className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
-              location.pathname === '/packages' ? 'bg-blue-800' : ''
-            }`}
-          >
-            Packages
-          </Link>
+          {user ? (
+            <>
+              <Link
+                to="/cars"
+                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
+                  location.pathname === '/cars' ? 'bg-blue-800' : ''
+                }`}
+              >
+                Cars
+              </Link>
+              <Link
+                to="/service-packages"
+                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
+                  location.pathname === '/service-packages' ? 'bg-blue-800' : ''
+                }`}
+              >
+                Service Packages
+              </Link>
+              <Link
+                to="/packages"
+                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
+                  location.pathname === '/packages' ? 'bg-blue-800' : ''
+                }`}
+              >
+                Packages
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="block px-3 py-2 rounded-md hover:bg-red-700 bg-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
+                  location.pathname === '/login' ? 'bg-blue-800' : ''
+                }`}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
+                  location.pathname === '/register' ? 'bg-blue-800' : ''
+                }`}
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
       {isOpen && (
         <div className="md:hidden bg-blue-600">
-          <Link
-            to="/cars"
-            className={`block px-4 py-2 hover:bg-blue-700 ${
-              location.pathname === '/cars' ? 'bg-blue-800' : ''
-            }`}
-            onClick={toggleMenu}
-          >
-            Cars
-          </Link>
-          <Link
-            to="/service-packages"
-            className={`block px-4 py-2 hover:bg-blue-700 ${
-              location.pathname === '/service-packages' ? 'bg-blue-800' : ''
-            }`}
-            onClick={toggleMenu}
-          >
-            Service Packages
-          </Link>
-          <Link
-            to="/packages"
-            className={`block px-4 py-2 hover:bg-blue-700 ${
-              location.pathname === '/packages' ? 'bg-blue-800' : ''
-            }`}
-            onClick={toggleMenu}
-          >
-            Packages
-          </Link>
+          {user ? (
+            <>
+              <Link
+                to="/cars"
+                className={`block px-4 py-2 hover:bg-blue-700 ${
+                  location.pathname === '/cars' ? 'bg-blue-800' : ''
+                }`}
+                onClick={toggleMenu}
+              >
+                Cars
+              </Link>
+              <Link
+                to="/service-packages"
+                className={`block px-4 py-2 hover:bg-blue-700 ${
+                  location.pathname === '/service-packages' ? 'bg-blue-800' : ''
+                }`}
+                onClick={toggleMenu}
+              >
+                Service Packages
+              </Link>
+              <Link
+                to="/packages"
+                className={`block px-4 py-2 hover:bg-blue-700 ${
+                  location.pathname === '/packages' ? 'bg-blue-800' : ''
+                }`}
+                onClick={toggleMenu}
+              >
+                Packages
+              </Link>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  toggleMenu();
+                }}
+                className="block w-full text-left px-4 py-2 hover:bg-red-700 bg-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className={`block px-4 py-2 hover:bg-blue-700 ${
+                  location.pathname === '/login' ? 'bg-blue-800' : ''
+                }`}
+                onClick={toggleMenu}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className={`block px-4 py-2 hover:bg-blue-700 ${
+                  location.pathname === '/register' ? 'bg-blue-800' : ''
+                }`}
+                onClick={toggleMenu}
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       )}
     </nav>

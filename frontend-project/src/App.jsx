@@ -1,9 +1,17 @@
 // src/App.js
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
 import CarTable from './pages/CarTable';
 import ServicePackageTable from './pages/ServicePackageTable';
-import Navbar from './components/Navbar';
 import PackageTable from './pages/PackageTable';
+import authService from './services/authService';
+
+const ProtectedRoute = ({ children }) => {
+  const user = authService.getCurrentUser();
+  return user ? children : <Navigate to="/login" />;
+};
 
 function App() {
   return (
@@ -11,12 +19,34 @@ function App() {
       <div className="min-h-screen bg-gray-100">
         <Navbar />
         <div className="container mx-auto p-6">
-          <h1 className="text-3xl font-bold text-center mb-6">Car Service Management System</h1>
           <Routes>
-            <Route path="/cars" element={<CarTable />} />
-            <Route path="/service-packages" element={<ServicePackageTable />} />
-            <Route path="/packages" element={<PackageTable />} />
-            <Route path="*" element={<Navigate to={'/cars'} />} /> {/* Default route */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route
+              path="/cars"
+              element={
+                <ProtectedRoute>
+                  <CarTable />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/service-packages"
+              element={
+                <ProtectedRoute>
+                  <ServicePackageTable />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/packages"
+              element={
+                <ProtectedRoute>
+                  <PackageTable />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/" element={<Navigate to="/cars" />} />
           </Routes>
         </div>
       </div>

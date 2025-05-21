@@ -20,7 +20,10 @@ const packageRoutes = require('./routes/package.routes');
 const carRoutes = require('./routes/car.routes');
 const servicePackageRoutes = require('./routes/servicePackage.routes');
 const paymentRoutes = require('./routes/payment.routes');
+const authRoutes = require('./routes/auth.routes');
 
+// app.js
+app.use('/api/auth', authRoutes);
 app.use('/api/packages', packageRoutes);
 app.use('/api/cars', carRoutes);
 app.use('/api/service-packages', servicePackageRoutes);
