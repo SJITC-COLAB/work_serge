@@ -58,15 +58,15 @@ const ReportPage = () => {
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-4">Summary</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-blue-100 p-4 rounded-lg text-center">
+              <div className="bg-zinc-100 p-4 rounded-lg text-center">
                 <h4 className="text-lg font-medium">Total Cars</h4>
                 <p className="text-2xl font-bold">{cars.length}</p>
               </div>
-              <div className="bg-blue-100 p-4 rounded-lg text-center">
+              <div className="bg-zinc-100 p-4 rounded-lg text-center">
                 <h4 className="text-lg font-medium">Total Service Packages</h4>
                 <p className="text-2xl font-bold">{servicePackages.length}</p>
               </div>
-              <div className="bg-blue-100 p-4 rounded-lg text-center">
+              <div className="bg-zinc-100 p-4 rounded-lg text-center">
                 <h4 className="text-lg font-medium">Total Packages</h4>
                 <p className="text-2xl font-bold">{packages.length}</p>
               </div>
@@ -77,9 +77,9 @@ const ReportPage = () => {
           <div className="mb-8">
             <h3 className="text-xl font-semibold mb-4">Service Packages by Car</h3>
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-white border border-blue-300">
+              <table className="min-w-full bg-white border border-zinc-300">
                 <thead>
-                  <tr className="bg-blue-200">
+                  <tr className="bg-zinc-200">
                     <th className="py-2 px-4 border-b">Plate Number</th>
                     <th className="py-2 px-4 border-b">Car Type</th>
                     <th className="py-2 px-4 border-b">Service Packages</th>
@@ -88,7 +88,7 @@ const ReportPage = () => {
                 </thead>
                 <tbody>
                   {servicePackagesByCar.map((car) => (
-                    <tr key={car.plateNumber} className="hover:bg-blue-50">
+                    <tr key={car.plateNumber} className="hover:bg-zinc-50">
                       <td className="py-2 px-4 border-b">{car.plateNumber}</td>
                       <td className="py-2 px-4 border-b">{car.carType}</td>
                       <td className="py-2 px-4 border-b">{car.servicePackages.length}</td>
@@ -116,9 +116,9 @@ const ReportPage = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Service Packages by Package Type</h3>
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-white border border-blue-300">
+              <table className="min-w-full bg-white border border-zinc-300">
                 <thead>
-                  <tr className="bg-blue-200">
+                  <tr className="bg-zinc-200">
                     <th className="py-2 px-4 border-b">Package Number</th>
                     <th className="py-2 px-4 border-b">Package Name</th>
                     <th className="py-2 px-4 border-b">Service Package Count</th>
@@ -126,7 +126,7 @@ const ReportPage = () => {
                 </thead>
                 <tbody>
                   {servicePackagesByPackage.map((pkg) => (
-                    <tr key={pkg.packageNumber} className="hover:bg-blue-50">
+                    <tr key={pkg.packageNumber} className="hover:bg-zinc-50">
                       <td className="py-2 px-4 border-b">{pkg.packageNumber}</td>
                       <td className="py-2 px-4 border-b">{pkg.packageName}</td>
                       <td className="py-2 px-4 border-b">{pkg.count}</td>
