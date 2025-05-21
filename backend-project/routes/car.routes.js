@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const { generateRandomId } = require('../utils/Utils');
 const Car = db.Car;
 
 // Get all cars
@@ -22,6 +23,10 @@ router.get('/:plateNumber', async (req, res) => {
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
     }
+
+      const id = generateRandomId(6)
+
+    req.body['plateNumber'] = `RWF${id}`;
     
     res.json(car);
   } catch (error) {

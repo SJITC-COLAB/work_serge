@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
 
     const id = generateRandomId(5)
 
-    req.body['RecordNumber'] = id;
+    req.body['RecordNumber'] = `SVC${id}`;
 
 
 

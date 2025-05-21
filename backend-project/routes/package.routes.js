@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+const { generateRandomId } = require('../utils/Utils');
 const Package = db.Package;
 
 // Get all packages
@@ -32,6 +33,10 @@ router.get('/:packageNumber', async (req, res) => {
 // Create a new package
 router.post('/', async (req, res) => {
   try {
+   const id = generateRandomId(5)
+
+    req.body['packageNumber'] = `PK${id}`;
+
     const package = await Package.create(req.body);
     res.status(201).json(package);
   } catch (error) {

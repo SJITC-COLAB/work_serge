@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import CarTable from './pages/CarTable';
 import ServicePackageTable from './pages/ServicePackageTable';
 import Navbar from './components/Navbar';
+import PackageTable from './pages/PackageTable';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/cars" element={<CarTable />} />
             <Route path="/service-packages" element={<ServicePackageTable />} />
+            <Route path="/packages" element={<PackageTable />} />
             <Route path="*" element={<Navigate to={'/cars'} />} /> {/* Default route */}
           </Routes>
         </div>
