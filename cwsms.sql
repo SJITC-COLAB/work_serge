@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 12:04 PM
+-- Generation Time: May 21, 2025 at 12:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -109,6 +109,28 @@ INSERT INTO `service_packages` (`RecordNumber`, `serviceDate`, `plateNumber`, `p
 ('pVeLr', '2008-04-11 00:00:00', 'ABC123', 'PKG023', '2025-05-21 09:12:45', '2025-05-21 09:12:45'),
 ('SVChCq3s', '1970-03-19 00:00:00', 'ABC123', 'PKG001', '2025-05-21 10:02:16', '2025-05-21 10:02:16');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
+(1, 'serge', 'serge@gmail.com', '$2b$10$4JLegKTmAYL.rrrHZP55COQ11bDC.HLufVqkWnP/OBq8nPZQ62hcG', '2025-05-21 10:20:45', '2025-05-21 10:20:45');
+
 --
 -- Indexes for dumped tables
 --
@@ -140,6 +162,24 @@ ALTER TABLE `service_packages`
   ADD PRIMARY KEY (`RecordNumber`),
   ADD KEY `idx_service_package_car` (`plateNumber`),
   ADD KEY `idx_service_package_package` (`packageNumber`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
