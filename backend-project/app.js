@@ -21,8 +21,10 @@ const carRoutes = require('./routes/car.routes');
 const servicePackageRoutes = require('./routes/servicePackage.routes');
 const paymentRoutes = require('./routes/payment.routes');
 const authRoutes = require('./routes/auth.routes');
+const reportRoutes = require('./routes/report.routes');
 
-// app.js
+// middle wares
+app.use('/api/reports', reportRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/packages', packageRoutes);
 app.use('/api/cars', carRoutes);

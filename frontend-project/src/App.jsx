@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/Navbar';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
+import ReportPage from './components/ReportPage';
 import CarTable from './pages/CarTable';
 import ServicePackageTable from './pages/ServicePackageTable';
 import PackageTable from './pages/PackageTable';
@@ -43,6 +44,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <PackageTable />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/reports"
+              element={
+                <ProtectedRoute>
+                  <ReportPage />
                 </ProtectedRoute>
               }
             />

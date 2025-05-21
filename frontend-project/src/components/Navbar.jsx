@@ -19,8 +19,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-green-600 w-[240px] min-h-screen items-center flex flex-col justify-around text-white shadow-lg">
-      <div className="container mx-auto px-4  flex-col  py-3 flex h-1/2 justify-between items-center">
+    <nav className="bg-blue-600 text-white shadow-lg">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold">
           Car Service Management
         </Link>
@@ -72,6 +72,14 @@ const Navbar = () => {
                 }`}
               >
                 Packages
+              </Link>
+              <Link
+                to="/reports"
+                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
+                  location.pathname === '/reports' ? 'bg-blue-800' : ''
+                }`}
+              >
+                Reports
               </Link>
               <button
                 onClick={handleLogout}
@@ -133,7 +141,24 @@ const Navbar = () => {
               >
                 Packages
               </Link>
-            
+              <Link
+                to="/reports"
+                className={`block px-4 py-2 hover:bg-blue-700 ${
+                  location.pathname === '/reports' ? 'bg-blue-800' : ''
+                }`}
+                onClick={toggleMenu}
+              >
+                Reports
+              </Link>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  toggleMenu();
+                }}
+                className="block w-full text-left px-4 py-2 hover:bg-red-700 bg-red-600"
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
@@ -158,17 +183,7 @@ const Navbar = () => {
             </>
           )}
         </div>
-        
       )}
-        <button
-                onClick={() => {
-                  handleLogout();
-                  toggleMenu();
-                }}
-                className="block w-full text-left px-4 py-2 hover:bg-red-700 bg-red-600"
-              >
-                Logout
-              </button>
     </nav>
   );
 };
