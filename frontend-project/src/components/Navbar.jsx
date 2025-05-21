@@ -46,7 +46,7 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <div className={`md:flex space-x-4 ${isOpen ? 'block' : 'hidden'} md:block`}>
+        <div className={`md:flex hidden space-x-4 ${isOpen ? 'block' : 'hidden'} md:block`}>
           {user ? (
             <>
               <Link
@@ -57,22 +57,7 @@ const Navbar = () => {
               >
                 Cars
               </Link>
-              <Link
-                to="/service-packages"
-                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
-                  location.pathname === '/service-packages' ? 'bg-blue-800' : ''
-                }`}
-              >
-                Service Packages
-              </Link>
-              <Link
-                to="/packages"
-                className={`block px-3 py-2 rounded-md hover:bg-blue-700 ${
-                  location.pathname === '/packages' ? 'bg-blue-800' : ''
-                }`}
-              >
-                Packages
-              </Link>
+             
               <button
                 onClick={handleLogout}
                 className="block px-3 py-2 rounded-md hover:bg-red-700 bg-red-600"
@@ -115,25 +100,7 @@ const Navbar = () => {
               >
                 Cars
               </Link>
-              <Link
-                to="/service-packages"
-                className={`block px-4 py-2 hover:bg-blue-700 ${
-                  location.pathname === '/service-packages' ? 'bg-blue-800' : ''
-                }`}
-                onClick={toggleMenu}
-              >
-                Service Packages
-              </Link>
-              <Link
-                to="/packages"
-                className={`block px-4 py-2 hover:bg-blue-700 ${
-                  location.pathname === '/packages' ? 'bg-blue-800' : ''
-                }`}
-                onClick={toggleMenu}
-              >
-                Packages
-              </Link>
-              <button
+                            <button
                 onClick={() => {
                   handleLogout();
                   toggleMenu();
