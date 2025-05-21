@@ -68,14 +68,14 @@ const RegisterPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
           >
             Register
           </button>
         </form>
         <p className="mt-4 text-center">
           Already have an account?{' '}
-          <a href="/login" className="text-blue-500 hover:underline">
+          <a href="/login" className="text-green-500 hover:underline">
             Login
           </a>
         </p>

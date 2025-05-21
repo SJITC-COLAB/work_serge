@@ -57,14 +57,14 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
           >
             Login
           </button>
         </form>
         <p className="mt-4 text-center">
           Don't have an account?{' '}
-          <a href="/register" className="text-blue-500 hover:underline">
+          <a href="/register" className="text-green-500 hover:underline">
             Register
           </a>
         </p>

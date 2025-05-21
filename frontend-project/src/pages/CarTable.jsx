@@ -48,7 +48,7 @@ const CarTable = () => {
       {success && <div className="bg-green-100 text-green-700 p-4 mb-4 rounded">{success}</div>}
       <button
         onClick={() => { setIsEdit(false); setShowFormModal(true); }}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4"
+        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-4"
       >
         Add New Car
       </button>
