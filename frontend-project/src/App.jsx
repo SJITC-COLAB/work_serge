@@ -30,22 +30,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/service-packages"
-              element={
-                <ProtectedRoute>
-                  <ServicePackageTable />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/packages"
-              element={
-                <ProtectedRoute>
-                  <PackageTable />
-                </ProtectedRoute>
-              }
-            />
+          
             <Route path="/" element={<Navigate to="/cars" />} />
           </Routes>
         </div>
