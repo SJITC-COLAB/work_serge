@@ -24,9 +24,6 @@ router.get('/:plateNumber', async (req, res) => {
       return res.status(404).json({ message: 'Car not found' });
     }
 
-      const id = generateRandomId(6)
-
-    req.body['plateNumber'] = `RWF${id}`;
     
     res.json(car);
   } catch (error) {
@@ -41,6 +38,11 @@ router.post('/', async (req, res) => {
     if(carexist){
       return res.status(400).json({message:'car already exit'})
     }
+
+    
+      const id = generateRandomId(6)
+
+    req.body['plateNumber'] = `RAD${id}`;
     const car = await Car.create(req.body);
     res.status(201).json(car);
   } catch (error) {
